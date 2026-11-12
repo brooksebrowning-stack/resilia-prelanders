@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "prelander-t06j",
+      "settings": {
+        "pdp_url": "/products/resilia-oil-of-oregano-softgels"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
