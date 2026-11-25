@@ -27,23 +27,33 @@ def card(n,sym,title,main,body,res,pill='',lab='What changes:'):
     p=f'<div class="pill">{pill}</div>' if pill else ''
     bs=''.join(f'<p>{b}</p>' for b in ([body] if isinstance(body,str) else body))
     return f'<div class="r card"><p class="sym">{sym}</p><div class="rh"><div class="num">{n}</div><h3>{title}</h3></div>{main}<div class="body">{p}{bs}<p class="res"><b>{lab}</b> {res}</p></div></div>'
+
+WHY=f"""<section class="ben"><p class="tag">WHY RESILIA</p><h2 class="h2">Why people choose Resilia Ceylon Cinnamon</h2><p class="t">The real cost of a supplement isn’t the price of the pouch. It’s another bottle you don’t trust, don’t finish and never reorder.</p><div class="bfs"><div class="bf"><span class="bfi">🏷️</span><div><b>Both doses, printed</b><p>1,000 mg Ceylon cinnamon extract and 500 mg berberine HCl: the actual amounts in every two-capsule serving. No blend hiding the amounts.</p></div></div><div class="bf"><span class="bfi">📦</span><div><b>One pouch, not two bottles</b><p>Ceylon cinnamon extract and berberine HCl together, so there’s one thing to take, one thing to reorder and one delivery.</p></div></div><div class="bf"><span class="bfi">☕</span><div><b>A routine you’ll actually keep</b><p>Two capsules with breakfast. If a routine is complicated, you stop doing it. This one takes ten seconds.</p></div></div><div class="bf"><span class="bfi">🩸</span><div><b>One clear claim</b><p>{CLAIM}</p></div></div><div class="bf"><span class="bfi">🔬</span><div><b>Made with care</b><p>Third-party tested. Made in GMP certified facilities. Gluten free, non-GMO, no artificial additives.</p></div></div><div class="bf"><span class="bfi">✅</span><div><b>30 days to decide</b><p>{GUAR}</p></div></div></div>{btn('Get Resilia Ceylon Cinnamon →')}</section>"""
+REVS=[('Debra M.','I was already looking into berberine when I came across this. Figured getting cinnamon and berberine together made more sense than buying two different bottles. Price was decent too. No complaints so far.'),
+ ('John S.','I take mine with breakfast, right after my coffee. Been doing it for about six weeks now and haven\'t missed many days. I\'m usually terrible at keeping up with supplements lol, but this one\'s easy.')]
+def reviews():
+    c=''.join(f'<div class="r card"><p style="color:#C8871E;font-size:18px;letter-spacing:2px">★★★★★</p><div class="body"><p>“{t}”</p><p style="font-size:14px;color:#7A6558"><b>{n}</b> · Resilia Ceylon Cinnamon · <span data-review-date="TODO">[date from review platform]</span></p></div></div>' for n,t in REVS)
+    return f'<section style="display:flex;flex-direction:column;gap:10px"><!-- DEV: real customer reviews; add each review date from Resilia\'s review platform before launch. Compliance approval required (Rule 12). --><p class="tag">WHAT CUSTOMERS SAY</p><h2 class="h2">“This one’s easy.”</h2>{c}<p class="fine">Individual results may vary.</p></section>'
+
 EXPECT=f'''<section class="r"><h2>What to expect</h2><div class="wk"><b>EVERY MORNING</b><p class="t" style="font-size:17px">Two capsules with breakfast.</p></div><div class="wk"><b>EVERY DAY</b><p class="t" style="font-size:17px">{CLAIM}</p></div><div class="wk"><b>OVER TIME</b><p class="t" style="font-size:17px">{RES}</p></div><p class="fine">Watch the trend, not one day.</p></section>
 <section class="box"><p class="tag">30-DAY GUARANTEE</p><h2 class="h2">Try it for 30 days.</h2><p class="t">Take two capsules every morning for a month. Every order comes with a {GUAR} You don’t have to subscribe: buy one pouch or a bundle, whatever fits.</p></section>'''
 def fit(a,b): return f'''<section class="r"><h2 class="h2">Is Resilia for someone like me?</h2><p class="t">{a}</p><p class="t">{b}</p><p class="tag" style="margin-top:6px">WHAT’S IN EVERY SERVING</p><ul class="rt"><li>Ceylon cinnamon extract (1,000 mg)</li><li>Berberine HCl (500 mg)</li><li>Ceylon Cinnamon</li><li>Two vegetable capsules, once a day</li><li>Gluten free, non-GMO, no artificial additives</li><li>30-Day Money-Back Guarantee</li></ul></section>'''
 def product(cta): return f'''<section class="box"><div style="display:flex;flex-wrap:wrap;gap:18px;align-items:center">
 <div style="flex:0 0 150px;width:150px">{img('POUCH','Resilia Ceylon Cinnamon with Berberine HCl pouch, 60 capsules','1/1','contain')}</div>
 <div style="flex:1 1 240px;display:flex;flex-direction:column;gap:8px"><h3 style="font-family:'Clash Grotesk','Space Grotesk',sans-serif;font-size:23px;font-weight:700;line-height:1.2">Resilia Ceylon Cinnamon + Berberine HCl</h3>
-<p style="font-size:16px;line-height:1.5">Ceylon cinnamon extract 1,000 mg · Berberine HCl 500 mg. Two capsules daily. {GUAR}</p><ul class="rt" style="margin-top:4px"><li>{CLAIM}</li><li>Two capsules daily</li><li>Third-party tested</li><li>GMP certified facilities</li></ul></div></div>
+<p style="font-size:16px;line-height:1.5">Ceylon cinnamon extract 1,000 mg · Berberine HCl 500 mg. Two capsules daily. {GUAR}</p><ul class="rt" style="margin-top:4px"><li>{CLAIM}</li><li>Two capsules daily</li><li>Two capsules daily, 30 servings per pouch</li><li>One pouch or a bundle. No subscription required.</li><li>Third-party tested · GMP certified facilities</li></ul></div></div>
 {btn(cta)}<p style="font-size:13px;color:#7A6558;text-align:center">See today’s price at the official shop.</p></section>'''
 FAQ=[('What’s in Resilia Ceylon Cinnamon?','Two ingredients, with the doses on the label: Ceylon cinnamon extract, 1,000 mg, and berberine HCl, 500 mg. Two vegetable capsules per serving, 30 servings per pouch. Gluten free, non-GMO, no artificial additives.'),
  ('What kind of cinnamon is it?','Resilia uses Ceylon Cinnamon extract.'),
+ ('Why are both ingredients in the same pouch?','So it’s one routine: one pouch, two capsules, one reorder. Every two-capsule serving has 1,000 mg of Ceylon cinnamon extract and 500 mg of berberine HCl.'),
+ ('Do I have to subscribe?','No. Buy one pouch or a bundle, whatever fits. One pouch is 30 servings, a month of mornings.'),
  ('How do I take it?','Two capsules, once a day, with your favorite drink. Most people take them with breakfast.'),
  ('Should I check with anyone first?',ADV),('How long should I take it?',RES),('What if it’s not for me?','Every order comes with a '+GUAR)]
 def tail(story):
     q=''.join(f'<details><summary>{a}</summary><p>{b}</p></details>' for a,b in FAQ)
     d=(' '+DRAM+' Characters are portrayed by actors or illustrated.') if story else ''
     return f'''<section style="display:flex;flex-direction:column;gap:4px"><h2 class="h2" style="margin-bottom:6px">Questions people ask</h2>{q}</section>
-{btn('See if Resilia is right for you →')}
+{btn('Get Resilia at today’s price →')}
 <div class="fine" style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
 <p>ADVERTORIAL. This page is an advertisement for Resilia.{d}</p>
 <p>{FDA}</p>
@@ -59,9 +69,9 @@ def page(P):
        f'<section style="display:flex;flex-direction:column;gap:6px"><h2 class="h2">{P["list_h"]}</h2></section>']
     for i,c in enumerate(P['cards'],1):
         h.append(card(i,*c,lab=P.get('lab','What changes:')))
-        if i==3: h.append(btn('See today’s price →')+TRUST)
-        if i==6: h.append(btn('Try Resilia for 30 days →')+TRUST)
-    h+=[EXPECT,fit(*P['fit']),product('Start the 2-capsule routine →'),tail(story)]
+        if i==3: h.append(btn('Get Resilia Ceylon Cinnamon →')+TRUST)
+        if i==6: h.append(btn('Start my 30-day Resilia routine →')+TRUST)
+    h+=[WHY,reviews(),EXPECT,fit(*P['fit']),product('Claim my pouch at today’s price →'),tail(story)]
     out=HEAD.replace('<title>C2B Prelander</title>',f'<title>{P["id"].upper()} Prelander</title>')+'\n'.join(h)
     os.makedirs(os.path.join(HERE,'out'),exist_ok=True)
     fn=os.path.join(HERE,'out',P['id'].upper()+'.html'); open(fn,'w',encoding='utf8').write(out); print(fn,len(out)//1024,'KB')
